@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import styles from './dogs.module.css';
 import Item from './components/Item';
+import dogVoice from './dog.mp3';
 
 class App extends React.Component {
     constructor(props) {
@@ -24,7 +25,15 @@ class App extends React.Component {
         };
     }
 
+    audio = new Audio(dogVoice);
+
+    playSound = () => {
+        this.audio.currentTime = 0;
+        this.audio.play();
+    };
+
     clickedFn = (num) => {
+        this.playSound();
         this.setState({
             count: this.state.count + 1
         });
